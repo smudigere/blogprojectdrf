@@ -1,6 +1,7 @@
 #!/usr/bin/bash 
 
-sed -i 's/\[]/\["54.90.220.94"]/' /home/ubuntu/blogprojectdrf/blog/settings.py
+ip_address=$(curl -s ifconfig.me)
+sed -i "s/\[]/\[\"$ip_address\"]/" /home/ubuntu/blogprojectdrf/blog/settings.py
 
 python manage.py migrate 
 python manage.py makemigrations     

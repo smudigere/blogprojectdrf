@@ -5,8 +5,8 @@ After=network.target
 [Service]
 User=root
 Group=www-data
-WorkingDirectory=/root/blogprojectdrf
-ExecStart=/root/blogprojectdrf/env/bin/gunicorn \
+WorkingDirectory=/home/ubuntu/blogprojectdrf/
+ExecStart=/home/ubuntu/env/gunicorn \
           --access-logfile - \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \

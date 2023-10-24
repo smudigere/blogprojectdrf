@@ -1,6 +1,12 @@
 
 #!/usr/bin/bash
 
+new_ip=$(curl -s ifconfig.me)
+nginx_conf="/home/ubuntu/blogprojectdrf/nginx/nginx.conf"
+old_ip=$(grep -oP 'server_name \K[^;]+' $nginx_conf)
+
+sed -i "s/server_name $old_ip;/server_name $new_ip;/" $nginx_conf
+
 sudo systemctl daemon-reload
 sudo rm -f /etc/nginx/sites-enabled/default
 
